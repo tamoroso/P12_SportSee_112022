@@ -1,0 +1,16 @@
+.layout {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.layout_main_content {
+  position: relative;
+  display: flex;
+  height: 100%;
+  flex-grow: 2;
+}
+
+.layout_main_content > div {
+  width: 100%;
+}

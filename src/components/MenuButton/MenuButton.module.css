@@ -1,0 +1,9 @@
+.menu_button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 64px;
+  width: 64px;
+  background-color: #ffffff;
+  border-radius: 6px;
+}
