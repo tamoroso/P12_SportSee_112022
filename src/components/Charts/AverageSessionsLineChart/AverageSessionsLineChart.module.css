@@ -1,0 +1,25 @@
+.wrapper {
+  height: 258px;
+  width: 263px;
+  background-color: #ff0000;
+  border-radius: 5px;
+}
+
+.wrapper h2 {
+  color: white;
+  margin: 0;
+  opacity: 50%;
+  font-weight: 500;
+  font-size: 15px;
+  max-width: 147px;
+  padding: 34px 0px 0px 29px;
+}
+
+.custom_tooltip {
+  color: black;
+  font-size: 8px;
+  font-weight: 500;
+  display: block;
+  background-color: white;
+  padding: 0.4rem 0.2rem;
+}

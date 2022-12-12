@@ -1,13 +1,20 @@
 import React, { useEffect, useMemo, useState } from "react";
 import { useParams } from "react-router-dom";
 import { Badge } from "../../components";
-import { fetchUserData, fetchUserPerformance } from "../../services/api";
+import {
+  fetchUserActivity,
+  fetchUserAverageSessions,
+  fetchUserData,
+  fetchUserPerformance,
+} from "../../services/api";
 import styles from "./UserProfile.module.css";
 import { ReactComponent as Energy } from "../../assets/icons/energy.svg";
 import { ReactComponent as Chicken } from "../../assets/icons/chicken.svg";
 import { ReactComponent as Apple } from "../../assets/icons/apple.svg";
 import { ReactComponent as Cheeseburger } from "../../assets/icons/cheeseburger.svg";
 import {
+  ActivityBarChart,
+  AverageSessionsLineChart,
   PerformanceRadarChart,
   ScoreRadialChart,
 } from "../../components/Charts";
@@ -16,6 +23,8 @@ const UserProfile = () => {
   const { userId } = useParams();
   const [currentUserData, setCurrentUserData] = useState();
   const [currentPerformanceData, setCurrentPerformanceData] = useState();
+  const [currentAverageSessions, setCurrentAverageSessions] = useState();
+  const [currentActivityData, setCurrentActivityData] = useState();
 
   useEffect(() => {
     fetchUserData(userId).then((res) => setCurrentUserData(res));
@@ -23,6 +32,16 @@ const UserProfile = () => {
 
   useEffect(() => {
     fetchUserPerformance(userId).then((res) => setCurrentPerformanceData(res));
+  }, [userId]);
+
+  useEffect(() => {
+    fetchUserAverageSessions(userId).then((res) =>
+      setCurrentAverageSessions(res)
+    );
+  }, [userId]);
+
+  useEffect(() => {
+    fetchUserActivity(userId).then((res) => setCurrentActivityData(res));
   }, [userId]);
 
   const KeyDataFormated = useMemo(() => {
@@ -97,12 +116,36 @@ const UserProfile = () => {
     }
   }, [currentPerformanceData]);
 
-  useEffect(() => {
-    if (currentPerformanceData) {
-      console.log(currentPerformanceData);
-      console.log(performanceData);
+  const averageSessionsData = useMemo(() => {
+    if (currentAverageSessions) {
+      const averageSessionsDayMapping = {
+        1: "L",
+        2: "M",
+        3: "M",
+        4: "J",
+        5: "V",
+        6: "S",
+        7: "D",
+      };
+      return currentAverageSessions?.sessions.reduce((acc, item) => {
+        acc.push({
+          day: averageSessionsDayMapping[item.day],
+          sessionLength: item.sessionLength,
+        });
+
+        return acc;
+      }, []);
     }
-  }, [currentPerformanceData]);
+  }, [currentAverageSessions]);
+
+  const activityData = useMemo(() => {
+    if (currentActivityData) {
+      return currentActivityData?.sessions.map((element) => {
+        const date = new Date(element?.day);
+        return { ...element, day: date.getDate() };
+      });
+    }
+  }, [currentActivityData]);
 
   return (
     <>
@@ -122,9 +165,13 @@ const UserProfile = () => {
           ))}
       </ul>
       {/* {scoreData && <ScoreRadialChart scoreData={scoreData} />} */}
-      {performanceData && (
+      {/* {performanceData && (
         <PerformanceRadarChart performanceData={performanceData} />
-      )}
+      )} */}
+      {/* {averageSessionsData && (
+        <AverageSessionsLineChart averageSessionsData={averageSessionsData} />
+      )} */}
+      {activityData && <ActivityBarChart activityData={activityData} />}
     </>
   );
 };
