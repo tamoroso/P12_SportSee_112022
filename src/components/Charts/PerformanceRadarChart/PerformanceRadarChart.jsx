@@ -28,6 +28,7 @@ const PerformanceRadarChart = ({ performanceData }) => {
   );
 };
 
+// TODO: DEFINE PROPTYPES
 PerformanceRadarChart.propTypes = {};
 
 export default PerformanceRadarChart;

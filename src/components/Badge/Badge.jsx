@@ -20,6 +20,7 @@ const Badge = ({ badgeLabel, badgeIcon, badgeData, badgeColor }) => {
   );
 };
 
+// TODO: DEFINE PROPTYPES
 Badge.propTypes = {};
 
 export default Badge;

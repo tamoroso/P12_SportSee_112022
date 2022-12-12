@@ -81,6 +81,7 @@ const ActivityBarChart = ({ activityData }) => {
   );
 };
 
+// TODO: DEFINE PROPTYPES
 ActivityBarChart.propTypes = {};
 
 export default ActivityBarChart;

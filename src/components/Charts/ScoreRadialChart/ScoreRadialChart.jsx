@@ -63,6 +63,7 @@ const ScoreRadialChart = ({ scoreData }) => {
   );
 };
 
+// TODO: DEFINE PROPTYPES
 ScoreRadialChart.propTypes = {};
 
 export default ScoreRadialChart;

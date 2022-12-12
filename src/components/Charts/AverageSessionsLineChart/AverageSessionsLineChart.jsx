@@ -80,6 +80,7 @@ const AverageSessionsLineChart = ({ averageSessionsData }) => {
   );
 };
 
+// TODO: DEFINE PROPTYPES
 AverageSessionsLineChart.propTypes = {};
 
 export default AverageSessionsLineChart;

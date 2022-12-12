@@ -6,6 +6,7 @@ const MenuButton = ({ icon }) => {
   return <span className={styles.menu_button}>{icon}</span>;
 };
 
+// TODO: DEFINE PROPTYPES
 MenuButton.propTypes = {};
 
 export default MenuButton;
