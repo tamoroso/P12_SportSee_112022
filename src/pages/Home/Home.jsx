@@ -1,5 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import { UserBadge } from "../../components";
+import styles from "./Home.module.css";
 
 const Home = () => {
   const userAccounts = [
@@ -13,16 +15,15 @@ const Home = () => {
     },
   ];
   return (
-    <>
-      <h1>Home</h1>
-      <ul>
-        {userAccounts.map((user) => (
-          <li key={user.id}>
-            <Link to={`${user.id}/user-profile`}>{user.label}</Link>
-          </li>
-        ))}
-      </ul>
-    </>
+    <ul className={styles.user_accounts_wrapper}>
+      {userAccounts.map((user) => (
+        <li key={user.id}>
+          <Link to={`${user.id}/user-profile`}>
+            <UserBadge userLabel={user.label} />
+          </Link>
+        </li>
+      ))}
+    </ul>
   );
 };
 

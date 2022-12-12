@@ -1,10 +1,13 @@
 import React from "react";
-import PropTypes from "prop-types";
+import { Link } from "react-router-dom";
 
 const Error = () => {
-  return <h1>Error</h1>;
+  return (
+    <div>
+      <h1>Error 404</h1>
+      <Link to="/">Retouner à la page d'accueil</Link>
+    </div>
+  );
 };
-
-Error.propTypes = {};
 
 export default Error;

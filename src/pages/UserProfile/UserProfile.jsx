@@ -182,15 +182,16 @@ const UserProfile = () => {
         <div className={styles.main_charts}>
           {activityData && <ActivityBarChart activityData={activityData} />}
           <div className={styles.small_charts_wrapper}>
-            {scoreData && <ScoreRadialChart scoreData={scoreData} />}
-            {performanceData && (
-              <PerformanceRadarChart performanceData={performanceData} />
-            )}
             {averageSessionsData && (
               <AverageSessionsLineChart
                 averageSessionsData={averageSessionsData}
               />
             )}
+            {performanceData && (
+              <PerformanceRadarChart performanceData={performanceData} />
+            )}
+
+            {scoreData && <ScoreRadialChart scoreData={scoreData} />}
           </div>
         </div>
         <aside>

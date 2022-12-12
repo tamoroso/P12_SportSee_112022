@@ -1,0 +1,21 @@
+.user_badge_wrapper {
+  background-color: #fbfbfb;
+  border-radius: 5px;
+  min-width: 200px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 1rem;
+}
+
+.user_badge_wrapper h2 {
+  text-decoration: none;
+  color: black;
+  margin: 0;
+}
+
+.user_badge_wrapper svg {
+  width: 50px;
+  height: auto;
+}
