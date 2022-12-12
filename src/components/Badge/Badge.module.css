@@ -10,6 +10,13 @@
   padding: 0 32px;
 }
 
+@media screen and (max-width: 1250px) {
+  .badge {
+    width: min-content;
+    background-color: unset;
+  }
+}
+
 .badge_icon_wrapper {
   height: 60px;
   width: 60px;

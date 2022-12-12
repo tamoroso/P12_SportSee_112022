@@ -1,5 +1,62 @@
+h1 {
+  margin-bottom: 20px;
+  font-size: 48px;
+  font-weight: 500;
+  display: block;
+}
+
+h1 span {
+  color: #ff0000;
+}
+
+p {
+  font-size: 18px;
+  font-weight: 500;
+  display: block;
+  margin-bottom: 5rem;
+}
+
+h1,
+p {
+  max-width: 1124px;
+  margin-right: auto;
+}
+
+.dashboard {
+  display: flex;
+  flex-direction: row;
+}
+
 .badges_wrapper {
   display: flex;
   flex-direction: column;
-  gap: 39px;
+  margin: 0;
+  min-height: 607px;
+  justify-content: space-between;
+}
+
+.main_charts {
+  display: flex;
+  flex-direction: column;
+  gap: 28px;
+}
+
+.small_charts_wrapper {
+  display: flex;
+  flex-direction: row;
+  width: 835px;
+  justify-content: space-between;
+}
+
+@media screen and (max-width: 1250px) {
+  .dashboard {
+    flex-direction: column;
+  }
+
+  .badges_wrapper {
+    flex-direction: row;
+    min-height: unset;
+    min-width: 835px;
+    padding: 0;
+  }
 }

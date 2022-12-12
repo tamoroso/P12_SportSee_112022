@@ -13,4 +13,7 @@
 
 .layout_main_content > div {
   width: 100%;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
 }

@@ -1,6 +1,6 @@
 import React, { useEffect, useMemo, useState } from "react";
 import { useParams } from "react-router-dom";
-import { Badge } from "../../components";
+import { Badge, Spinner } from "../../components";
 import {
   fetchUserActivity,
   fetchUserAverageSessions,
@@ -25,6 +25,7 @@ const UserProfile = () => {
   const [currentPerformanceData, setCurrentPerformanceData] = useState();
   const [currentAverageSessions, setCurrentAverageSessions] = useState();
   const [currentActivityData, setCurrentActivityData] = useState();
+  const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
     fetchUserData(userId).then((res) => setCurrentUserData(res));
@@ -43,6 +44,22 @@ const UserProfile = () => {
   useEffect(() => {
     fetchUserActivity(userId).then((res) => setCurrentActivityData(res));
   }, [userId]);
+
+  useEffect(() => {
+    setIsLoading(
+      !(
+        currentUserData &&
+        currentPerformanceData &&
+        currentActivityData &&
+        currentAverageSessions
+      )
+    );
+  }, [
+    currentUserData,
+    currentPerformanceData,
+    currentActivityData,
+    currentAverageSessions,
+  ]);
 
   const KeyDataFormated = useMemo(() => {
     const keyDataFormat = {
@@ -147,32 +164,51 @@ const UserProfile = () => {
     }
   }, [currentActivityData]);
 
+  if (isLoading) {
+    return <Spinner />;
+  }
+
   return (
-    <>
+    <div>
       {currentUserData && (
-        <h1>Bonjour, {currentUserData?.userInfos?.firstName}</h1>
+        <>
+          <h1>
+            Bonjour <span>{currentUserData?.userInfos?.firstName}</span>
+          </h1>
+          <p>Félicitation ! Vous avez explosé vos objectifs hier 👏</p>
+        </>
       )}
-      <ul className={styles.badges_wrapper}>
-        {KeyDataFormated &&
-          KeyDataFormated.map((key, index) => (
-            <Badge
-              badgeLabel={key.badgeLabel}
-              badgeData={key.badgeData}
-              badgeIcon={key.badgeIcon}
-              badgeColor={key.badgeColor}
-              key={index}
-            />
-          ))}
-      </ul>
-      {/* {scoreData && <ScoreRadialChart scoreData={scoreData} />} */}
-      {/* {performanceData && (
-        <PerformanceRadarChart performanceData={performanceData} />
-      )} */}
-      {/* {averageSessionsData && (
-        <AverageSessionsLineChart averageSessionsData={averageSessionsData} />
-      )} */}
-      {activityData && <ActivityBarChart activityData={activityData} />}
-    </>
+      <div className={styles.dashboard}>
+        <div className={styles.main_charts}>
+          {activityData && <ActivityBarChart activityData={activityData} />}
+          <div className={styles.small_charts_wrapper}>
+            {scoreData && <ScoreRadialChart scoreData={scoreData} />}
+            {performanceData && (
+              <PerformanceRadarChart performanceData={performanceData} />
+            )}
+            {averageSessionsData && (
+              <AverageSessionsLineChart
+                averageSessionsData={averageSessionsData}
+              />
+            )}
+          </div>
+        </div>
+        <aside>
+          <ul className={styles.badges_wrapper}>
+            {KeyDataFormated &&
+              KeyDataFormated.map((key, index) => (
+                <Badge
+                  badgeLabel={key.badgeLabel}
+                  badgeData={key.badgeData}
+                  badgeIcon={key.badgeIcon}
+                  badgeColor={key.badgeColor}
+                  key={index}
+                />
+              ))}
+          </ul>
+        </aside>
+      </div>
+    </div>
   );
 };
 
