@@ -37,6 +37,6 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 
 - `git clone https://github.com/tamoroso/P12_SportSee_112022` to clone the repository.
 - `npm install` to install the dependencies.
-- `npm start` to launch the frontend on port 3001 ([http://localhost:3001](http://localhost:3001/))
+- `npm start` to launch the frontend on port 3001 ([http://localhost:3001](http://localhost:3001/)). By default create-react-app launch the app on port 3000 so you will have to add a `.env` file and add `PORT = 3001` to make it run on port 3001.
 
 There is mocked data integrated to the project. If you want to operate this mode, you will need to create a `.env` file and add `REACT_APP_ENVIRONMENT  =  "dev"`. The app will use API url by default.

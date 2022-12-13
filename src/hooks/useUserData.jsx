@@ -9,7 +9,12 @@ import { ReactComponent as Energy } from "../assets/icons/energy.svg";
 import { ReactComponent as Chicken } from "../assets/icons/chicken.svg";
 import { ReactComponent as Apple } from "../assets/icons/apple.svg";
 import { ReactComponent as Cheeseburger } from "../assets/icons/cheeseburger.svg";
-import UserData from "../classes/UserData";
+import {
+  ActivityData,
+  AverageSessions,
+  MainData,
+  PerformanceData,
+} from "../classes/UserData";
 
 const useUserData = (userId) => {
   const [currentUserData, setCurrentUserData] = useState();
@@ -19,15 +24,17 @@ const useUserData = (userId) => {
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
-    fetchUserData(userId).then((res) => setCurrentUserData(res));
-    fetchUserActivity(userId).then((res) => setCurrentActivityData(res));
-    fetchUserPerformance(userId).then((res) => setCurrentPerformanceData(res));
+    fetchUserData(userId).then((res) => setCurrentUserData(new MainData(res)));
+    fetchUserActivity(userId).then((res) =>
+      setCurrentActivityData(new ActivityData(res))
+    );
+    fetchUserPerformance(userId).then((res) =>
+      setCurrentPerformanceData(new PerformanceData(res))
+    );
     fetchUserAverageSessions(userId).then((res) =>
-      setCurrentAverageSessions(res)
+      setCurrentAverageSessions(new AverageSessions(res))
     );
   }, [userId]);
-
-  useEffect(() => {}, [userId]);
 
   useEffect(() => {
     setIsLoading(

@@ -1,10 +1,14 @@
 import axios from "axios";
 
-// TODO: ADD JSDOCS
+/**
+ * build the api url based on local environment variable and user ID
+ * @param {string} userId the user ID to integrate to the request
+ * @returns {string} the built api url
+ */
 const buildApiUrl = (userId) => {
   const appEnvironment = process.env.REACT_APP_ENVIRONMENT;
   const isDevEnv = appEnvironment === "dev";
-  const baseUrl = isDevEnv ? "/mock/user" : "http://localhost:3000";
+  const baseUrl = isDevEnv ? "/mock/user" : "http://localhost:3000/user";
 
   return {
     fetchUserDataUrl: `${baseUrl}/${userId}${
@@ -22,6 +26,11 @@ const buildApiUrl = (userId) => {
   };
 };
 
+/**
+ * fetch main user data based on user ID
+ * @param {string} userId the user ID to integrate to the request
+ * @returns {object} the data object of the response
+ */
 export const fetchUserData = async (userId) => {
   try {
     if (!userId) {
@@ -37,6 +46,11 @@ export const fetchUserData = async (userId) => {
   }
 };
 
+/**
+ * fetch activity data based on user ID
+ * @param {string} userId the user ID to integrate to the request
+ * @returns {object} the data object of the response
+ */
 export const fetchUserActivity = async (userId) => {
   try {
     if (!userId) {
@@ -52,6 +66,11 @@ export const fetchUserActivity = async (userId) => {
   }
 };
 
+/**
+ * fetch average sessions data based on user ID
+ * @param {string} userId the user ID to integrate to the request
+ * @returns {object} the data object of the response
+ */
 export const fetchUserAverageSessions = async (userId) => {
   try {
     if (!userId) {
@@ -67,6 +86,11 @@ export const fetchUserAverageSessions = async (userId) => {
   }
 };
 
+/**
+ * fetch performance data based on user ID
+ * @param {string} userId the user ID to integrate to the request
+ * @returns {object} the data object of the response
+ */
 export const fetchUserPerformance = async (userId) => {
   try {
     if (!userId) {
