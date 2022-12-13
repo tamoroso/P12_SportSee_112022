@@ -28,7 +28,13 @@ const PerformanceRadarChart = ({ performanceData }) => {
   );
 };
 
-// TODO: DEFINE PROPTYPES
-PerformanceRadarChart.propTypes = {};
+PerformanceRadarChart.propTypes = {
+  performanceData: PropTypes.arrayOf(
+    PropTypes.shape({
+      value: PropTypes.number,
+      kind: PropTypes.string,
+    })
+  ),
+};
 
 export default PerformanceRadarChart;

@@ -80,7 +80,10 @@ const AverageSessionsLineChart = ({ averageSessionsData }) => {
   );
 };
 
-// TODO: DEFINE PROPTYPES
-AverageSessionsLineChart.propTypes = {};
+AverageSessionsLineChart.propTypes = {
+  averageSessionsData: PropTypes.arrayOf(
+    PropTypes.shape({ day: PropTypes.string, sessionLength: PropTypes.number })
+  ),
+};
 
 export default AverageSessionsLineChart;

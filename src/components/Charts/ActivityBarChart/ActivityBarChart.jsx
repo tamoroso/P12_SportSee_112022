@@ -81,7 +81,14 @@ const ActivityBarChart = ({ activityData }) => {
   );
 };
 
-// TODO: DEFINE PROPTYPES
-ActivityBarChart.propTypes = {};
+ActivityBarChart.propTypes = {
+  activityData: PropTypes.arrayOf(
+    PropTypes.shape({
+      day: PropTypes.number,
+      kilogram: PropTypes.number,
+      calories: PropTypes.number,
+    })
+  ),
+};
 
 export default ActivityBarChart;

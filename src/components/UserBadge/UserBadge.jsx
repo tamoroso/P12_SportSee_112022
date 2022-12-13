@@ -12,7 +12,6 @@ const UserBadge = ({ userLabel }) => {
   );
 };
 
-// TODO: DEFINE PROPTYPES
-UserBadge.propTypes = {};
+UserBadge.propTypes = { userLabel: PropTypes.string };
 
 export default UserBadge;

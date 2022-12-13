@@ -9,6 +9,7 @@ import { ReactComponent as Energy } from "../assets/icons/energy.svg";
 import { ReactComponent as Chicken } from "../assets/icons/chicken.svg";
 import { ReactComponent as Apple } from "../assets/icons/apple.svg";
 import { ReactComponent as Cheeseburger } from "../assets/icons/cheeseburger.svg";
+import UserData from "../classes/UserData";
 
 const useUserData = (userId) => {
   const [currentUserData, setCurrentUserData] = useState();
@@ -25,6 +26,8 @@ const useUserData = (userId) => {
       setCurrentAverageSessions(res)
     );
   }, [userId]);
+
+  useEffect(() => {}, [userId]);
 
   useEffect(() => {
     setIsLoading(
