@@ -28,9 +28,10 @@ const useUserData = (userId) => {
     fetchUserActivity(userId).then((res) =>
       setCurrentActivityData(new ActivityData(res))
     );
-    fetchUserPerformance(userId).then((res) =>
-      setCurrentPerformanceData(new PerformanceData(res))
-    );
+    fetchUserPerformance(userId).then((res) => {
+      console.log(res);
+      setCurrentPerformanceData(new PerformanceData(res));
+    });
     fetchUserAverageSessions(userId).then((res) =>
       setCurrentAverageSessions(new AverageSessions(res))
     );
@@ -106,6 +107,7 @@ const useUserData = (userId) => {
 
   const performanceData = useMemo(() => {
     if (currentPerformanceData) {
+      console.log(currentPerformanceData);
       const performanceKindMapping = {
         cardio: "Cardio",
         energy: "Energie",

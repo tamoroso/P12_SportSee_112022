@@ -1,6 +1,6 @@
 export class UserData {
   constructor(data) {
-    if (Object.keys(data).includes("data")) {
+    if (Object.keys(data).includes("data") && Object.keys(data).length === 1) {
       this._data = data.data;
     } else {
       this._data = data;

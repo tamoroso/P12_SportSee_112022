@@ -40,10 +40,10 @@ const AverageSessionsLineChart = ({ averageSessionsData }) => {
   return (
     <div className={styles.wrapper} ref={wrapperRef}>
       <h2>Durée moyenne des sessions</h2>
-      <ResponsiveContainer width="100%" height="100%">
+      <ResponsiveContainer width="100%" height="70%">
         <LineChart
           data={averageSessionsData}
-          margin={{ bottom: 105, right: 15, left: 15 }}
+          margin={{ bottom: 20, right: 15, left: 15 }}
           onMouseMove={(e) => customMouseEnter(e)}
           onMouseOut={customMouseOut}
         >
