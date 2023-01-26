@@ -20,7 +20,17 @@ const UserProfile = () => {
     performanceData,
     scoreData,
     KeyDataFormated,
+    hasFetchError,
   } = useUserData(userId);
+
+  if (hasFetchError) {
+    return (
+      <p className={styles.nodata_error}>
+        Veuillez nous excuser !<br /> Nos services rencontrent un problème,
+        rechargez la page ou revenez plus tard.
+      </p>
+    );
+  }
 
   if (isLoading) {
     return <Spinner />;

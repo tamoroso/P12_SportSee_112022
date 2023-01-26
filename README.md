@@ -33,6 +33,10 @@ For more information about the backend installation, you can check out this [lin
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
+Developed with npm 8.5.4 and node 16.13.0
+
+Recommended text editor : Visual Studio Code
+
 ### Launching the project:
 
 - `git clone https://github.com/tamoroso/P12_SportSee_112022` to clone the repository.

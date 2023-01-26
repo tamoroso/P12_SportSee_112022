@@ -43,6 +43,7 @@ export const fetchUserData = async (userId) => {
     return response.data;
   } catch (error) {
     console.error(error);
+    throw error;
   }
 };
 
@@ -63,6 +64,7 @@ export const fetchUserActivity = async (userId) => {
     return response.data;
   } catch (error) {
     console.error(error);
+    throw error;
   }
 };
 
@@ -83,6 +85,7 @@ export const fetchUserAverageSessions = async (userId) => {
     return response.data;
   } catch (error) {
     console.error(error);
+    throw error;
   }
 };
 
@@ -103,5 +106,6 @@ export const fetchUserPerformance = async (userId) => {
     return response.data;
   } catch (error) {
     console.error(error);
+    throw error;
   }
 };

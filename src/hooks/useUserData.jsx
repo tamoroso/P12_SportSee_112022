@@ -22,19 +22,38 @@ const useUserData = (userId) => {
   const [currentAverageSessions, setCurrentAverageSessions] = useState();
   const [currentActivityData, setCurrentActivityData] = useState();
   const [isLoading, setIsLoading] = useState(true);
+  const [hasFetchError, setHasFetchError] = useState(false);
 
   useEffect(() => {
-    fetchUserData(userId).then((res) => setCurrentUserData(new MainData(res)));
-    fetchUserActivity(userId).then((res) =>
-      setCurrentActivityData(new ActivityData(res))
-    );
-    fetchUserPerformance(userId).then((res) => {
-      console.log(res);
-      setCurrentPerformanceData(new PerformanceData(res));
-    });
-    fetchUserAverageSessions(userId).then((res) =>
-      setCurrentAverageSessions(new AverageSessions(res))
-    );
+    fetchUserData(userId)
+      .then((res) => setCurrentUserData(new MainData(res)))
+      .catch((error) => {
+        setHasFetchError(true);
+        console.error(`useUserData::Fetch user data error : ${error}`);
+      });
+    fetchUserActivity(userId)
+      .then((res) => setCurrentActivityData(new ActivityData(res)))
+      .catch((error) => {
+        setHasFetchError(true);
+        console.error(`useUserData::Fetch user activity data error : ${error}`);
+      });
+    fetchUserPerformance(userId)
+      .then((res) => {
+        console.log(res);
+        setCurrentPerformanceData(new PerformanceData(res));
+      })
+      .catch((error) => {
+        setHasFetchError(true);
+        console.error(`useUserData::Fetch user performance error : ${error}`);
+      });
+    fetchUserAverageSessions(userId)
+      .then((res) => setCurrentAverageSessions(new AverageSessions(res)))
+      .catch((error) => {
+        setHasFetchError(true);
+        console.error(
+          `useUserData::Fetch user average session error : ${error}`
+        );
+      });
   }, [userId]);
 
   useEffect(() => {
@@ -165,6 +184,7 @@ const useUserData = (userId) => {
     scoreData,
     KeyDataFormated,
     isLoading,
+    hasFetchError,
   };
 };
 

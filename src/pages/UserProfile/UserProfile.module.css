@@ -48,6 +48,14 @@ p {
   justify-content: space-between;
 }
 
+.nodata_error {
+  font-weight: 800;
+  display: block;
+  max-width: 500px;
+  text-align: center;
+  margin: auto;
+}
+
 @media screen and (max-width: 1250px) {
   .dashboard {
     flex-direction: column;
